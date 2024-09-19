@@ -1,24 +1,32 @@
 <template>
   <div class="modal-overlay" v-if="isVisible" @click.self="closeModal">
     <div class="modal-content">
-      <h2 class="modal-title">Modal Title</h2>
-      <p class="modal-body">modal content</p>
+      <h2 class="modal-title">{{ title }}</h2>
+      <p class="modal-body">{{ content }}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'modalComponent',
+  name: 'ModalComponent',
   props: {
     isVisible: {
       type: Boolean,
       required: true,
     },
+    title: {
+      type: String,
+      default: 'Modal Title', 
+    },
+    content: {
+      type: String,
+      default: 'modal Content', 
+    },
   },
   methods: {
     closeModal() {
-      this.$emit('close');
+      this.$emit('closeModal');
     },
   },
 };

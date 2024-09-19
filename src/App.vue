@@ -1,33 +1,43 @@
 <template>
   <div>
     <div class="focus">
-      <input type="text" ref="inputRef">
-      <br><br>
+      <input type="text" ref="inputRef" />
+      <br /><br />
       <button @click="inputFieldFocus">Focus</button>
-      <button @click="showModal = true">Open Modal</button>
+      <button @click="toggleModal">Open Modal</button>
     </div>
-    <Modal :isVisible="showModal" @close="showModal = false" />
+    <Modal 
+      :isVisible="showModal" 
+      :title="modalTitle" 
+      :content="modalContent" 
+      @closeModal="toggleModal" 
+    />
   </div>
-
 </template>
 
 <script>
-import Modal from './components/modalComponent.vue';
+import Modal from './components/ModalComponent';
+
 export default {
   name: 'App',
   components: {
     Modal
   },
-  methods: {
-    inputFieldFocus() {
-      this.$refs.inputRef.focus();
-    }
-  },
   data() {
     return {
       showModal: false,
+      modalTitle: 'Sign up for the Giveaway!',
+      modalContent: 'Grab your ninja swag for half price!.' 
     };
   },
+  methods: {
+    inputFieldFocus() {
+      this.$refs.inputRef.focus();
+    },
+    toggleModal() {
+      this.showModal = !this.showModal;
+    }
+  }
 }
 </script>
 
@@ -45,11 +55,6 @@ export default {
   margin: 50px auto;
   border: 1px solid #e0e0e0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.focus:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 input[type="text"] {
@@ -76,7 +81,7 @@ button {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 10px 0px;
+  margin: 10px 0;
   display: inline-block;
   text-align: center;
 }
