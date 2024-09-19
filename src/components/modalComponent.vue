@@ -1,8 +1,8 @@
 <template>
   <div class="modal-overlay" v-if="isVisible" @click.self="closeModal">
-    <div class="modal-content">
-      <h2 class="modal-title">{{ title }}</h2>
-      <p class="modal-body">{{ content }}</p>
+    <div :class="['modal-content', themeClass]">
+      <h2 :class="['modal-title', themeClass]">{{ title }}</h2>
+      <p :class="['modal-body', themeClass]">{{ content }}</p>
     </div>
   </div>
 </template>
@@ -17,11 +17,20 @@ export default {
     },
     title: {
       type: String,
-      default: 'Modal Title', 
+      default: 'Modal Title',
     },
     content: {
       type: String,
-      default: 'modal Content', 
+      default: 'modal Content',
+    },
+    theme: {
+      type: String,
+      default: null,
+    },
+  },
+  computed: {
+    themeClass() {
+      return this.theme === 'sales' ? 'sales-theme' : '';
     },
   },
   methods: {
@@ -67,6 +76,18 @@ export default {
   font-size: 1.2em;
   color: #666;
   margin-bottom: 20px;
+}
+
+.sales-theme.modal-content {
+  background-color: red;
+}
+
+.sales-theme.modal-title {
+  color: white;
+}
+
+.sales-theme.modal-body {
+  color: white;
 }
 
 button {

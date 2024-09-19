@@ -9,7 +9,8 @@
     <Modal 
       :isVisible="showModal" 
       :title="modalTitle" 
-      :content="modalContent" 
+      :content="modalContent"
+      :theme="'sales'" 
       @closeModal="toggleModal" 
     />
   </div>
@@ -27,7 +28,7 @@ export default {
     return {
       showModal: false,
       modalTitle: 'Sign up for the Giveaway!',
-      modalContent: 'Grab your ninja swag for half price!.' 
+      modalContent: 'Grab your ninja swag for half price!'
     };
   },
   methods: {
