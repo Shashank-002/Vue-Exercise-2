@@ -3,16 +3,15 @@
     <div class="focus">
       <input type="text" ref="inputRef" />
       <br /><br />
-      <button @click="inputFieldFocus">Focus</button>
-      <button @click="toggleModal">Open Modal</button>
+      <div class="button-container">
+        <button @click="inputFieldFocus">Focus</button>
+        <button @click="toggleModal">Open Modal</button>
+        <button @click="showSlotMessage">Click Me!</button>
+      </div>
+
     </div>
-    <Modal 
-      :isVisible="showModal" 
-      :title="modalTitle" 
-      :content="modalContent"
-      :theme="'sales'" 
-      @closeModal="toggleModal" 
-    />
+    <Modal :isVisible='showModal' :title='modalTitle' :content='modalContent' :theme='modalTheme'
+      @closeModal='toggleModal' />
   </div>
 </template>
 
@@ -28,7 +27,8 @@ export default {
     return {
       showModal: false,
       modalTitle: 'Sign up for the Giveaway!',
-      modalContent: 'Grab your ninja swag for half price!'
+      modalContent: 'Grab your ninja swag for half price!',
+      modalTheme: 'sales'
     };
   },
   methods: {
@@ -37,6 +37,9 @@ export default {
     },
     toggleModal() {
       this.showModal = !this.showModal;
+    },
+    showSlotMessage() {
+      alert("Slot callled!")
     }
   }
 }
@@ -73,13 +76,23 @@ input[type="text"]:focus {
   box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; 
+  margin-top: 10px;
+}
+
 button {
+  flex: 1;
+  min-width: 110px;
+  margin-top: 10px;
   background-color: #3498db;
   color: white;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   margin: 10px 0;
@@ -96,4 +109,64 @@ button:active {
   background-color: #2471a3;
   transform: scale(0.98);
 }
+
+@media (max-width:575px){
+  button {
+  flex: 1;
+  min-width: 100px;
+  margin-top: 10px;
+  background-color: #3498db;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 10px 0;
+  display: inline-block;
+  text-align: center;
+}
+}
+
+@media (max-width:425px){
+  button {
+  flex: 1;
+  min-width: 90px;
+  margin-top: 10px;
+  background-color: #3498db;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 10px 0;
+  display: inline-block;
+  text-align: center;
+}
+}
+
+@media (max-width:375px){
+  button {
+  flex: 1;
+  min-width: 75px;
+  margin-top: 10px;
+  background-color: #3498db;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 10px 0;
+  display: inline-block;
+  text-align: center;
+}
+}
+
+
+
 </style>

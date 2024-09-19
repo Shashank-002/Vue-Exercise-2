@@ -3,6 +3,7 @@
     <div :class="['modal-content', themeClass]">
       <h2 :class="['modal-title', themeClass]">{{ title }}</h2>
       <p :class="['modal-body', themeClass]">{{ content }}</p>
+      <slot></slot> 
     </div>
   </div>
 </template>
