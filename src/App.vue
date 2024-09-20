@@ -13,7 +13,7 @@
     </div>
 
     <ThemeModal :isModalVisible="showModal" :title="modalTitle" :content="modalContent"
-      :theme="modalTheme || defaultTheme" @closeModal="toggleModal">
+      :theme="salesTheme || defaultTheme" @closeModal="toggleModal">
       <h3>Hi! from slot</h3>
       <template v-slot:links>
         <a href="#" class="link-button">Link 1</a>
@@ -36,7 +36,7 @@ export default {
       showModal: false,
       modalTitle: 'Sign up for the Giveaway!',
       modalContent: 'Grab your ninja swag for half price!',
-      modalTheme: null,
+      salesTheme: null,
       defaultTheme: 'default',
     };
   },
@@ -48,16 +48,16 @@ export default {
       this.showModal = !this.showModal;
     },
     setTheme(theme) {
-      this.modalTheme = theme;
-      window.alert(`Current modal theme: ${this.modalTheme}`);
+      this.salesTheme = theme;
+      window.alert(`Current modal theme: ${this.salesTheme}`);
     },
     removeTheme() {
-      if (this.modalTheme === 'sales') {
-        this.modalTheme = this.defaultTheme;
+      if (this.salesTheme === 'sales') {
+        this.salesTheme = this.defaultTheme;
       } else {
-        this.modalTheme = 'sales';
+        this.salesTheme = this.defaultTheme;
       }
-      window.alert(`Current modal theme: ${this.modalTheme}`);
+      window.alert(`Current modal theme: ${this.salesTheme}`);
     },
   },
 };
