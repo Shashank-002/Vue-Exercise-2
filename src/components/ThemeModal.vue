@@ -1,9 +1,11 @@
 <template>
-  <div class="modal-overlay" v-if="isVisible" @click.self="closeModal">
+  <div class="modal-overlay" v-if="isModalVisible" @click.self="closeModal">
     <div :class="['modal-content', themeClass]">
       <h2 :class="['modal-title', themeClass]">{{ title }}</h2>
       <p :class="['modal-body', themeClass]">{{ content }}</p>
-      <slot></slot>
+      <h3 :class="h3ThemeClass">
+        <slot />
+      </h3>
       <slot name="links"></slot>
     </div>
   </div>
@@ -11,9 +13,9 @@
 
 <script>
 export default {
-  name: 'ModalComponent',
+  name: 'ThemeModal',
   props: {
-    isVisible: {
+    isModalVisible: {
       type: Boolean,
       required: true,
     },
@@ -23,7 +25,7 @@ export default {
     },
     content: {
       type: String,
-      default: 'modal Content',
+      default: 'Modal Content',
     },
     theme: {
       type: String,
@@ -32,7 +34,12 @@ export default {
   },
   computed: {
     themeClass() {
-      return this.theme === 'sales' ? 'sales-theme' : '';
+      if (this.theme === 'sales') return 'sales-theme';
+      if (this.theme === 'default') return 'default-theme';
+      return '';
+    },
+    h3ThemeClass() {
+      return this.theme === 'sales' ? 'sales-color' : 'default-color';
     },
   },
   methods: {
@@ -93,28 +100,49 @@ export default {
   color: white;
 }
 
-@media (max-width: 1024px) and (min-width: 900px)
-{
-  .modal-content {
-  margin-top: -250px;
-  height: 200px;
-}
+.sales-color {
+  color: white;
 }
 
-@media (max-width:768px)
-{
-  .modal-content {
-  margin-top: -250px;
-  height: 200px;
+.default-color {
+  color: gray;
 }
+
+@media (max-width: 1024px) and (min-width: 900px) {
+  .modal-content {
+    margin-top: -250px;
+    height: 200px;
+  }
+}
+
+@media (max-width:768px) {
+  .modal-content {
+    margin-top: -250px;
+    height: 200px;
+  }
 }
 
 @media (max-width:575px) {
 
   .modal-content {
-  margin-top: -250px;
-  height: 180px;
-}
+    margin-top: -250px;
+    height: 180px;
+    max-width: 340px;
+  }
+
+  .modal-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1abc9c;
+    margin-bottom: 15px;
+  }
+
+  .modal-body {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
   .sales-theme.modal-content {
     background-color: red;
     max-width: 340px;
@@ -132,6 +160,24 @@ export default {
 }
 
 @media (max-width:425px) {
+  .modal-content {
+    margin-top: -250px;
+    height: 180px;
+    max-width: 280px;
+  }
+
+  .modal-title {
+    font-weight: bold;
+    color: #1abc9c;
+    font-size: 24px;
+  }
+
+  .modal-body {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 16px;
+  }
+
   .sales-theme.modal-content {
     background-color: red;
     max-width: 280px;
@@ -150,9 +196,23 @@ export default {
 
 @media (max-width:375px) {
   .modal-content {
-  margin-top: -250px;
-  height: 160px;
-}
+    margin-top: -250px;
+    height: 130px;
+    max-width: 240px;
+  }
+
+  .modal-title {
+    font-weight: bold;
+    color: #1abc9c;
+    font-size: 20px;
+  }
+
+  .modal-body {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 12px;
+  }
+
   .sales-theme.modal-content {
     background-color: red;
     max-width: 240px;
@@ -169,44 +229,43 @@ export default {
   }
 }
 
-@media (min-width:1600px)
-{
+@media (min-width:1600px) {
   .modal-content {
-  background-color: #fff;
-  padding: 30px;
-  margin-top: -700px;
-  border-radius: 12px;
-  max-width: 850px;
-  height: 330px;
-  text-align: center;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
+    background-color: #fff;
+    padding: 30px;
+    margin-top: -700px;
+    border-radius: 12px;
+    max-width: 850px;
+    height: 330px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
 
-.modal-title {
-  font-size: 65px;
-  font-weight: bold;
-  color: #1abc9c;
-  margin-bottom: 15px;
-}
+  .modal-title {
+    font-size: 65px;
+    font-weight: bold;
+    color: #1abc9c;
+    margin-bottom: 15px;
+  }
 
-.modal-body {
-  font-size: 35px;
-  color: #666;
-  margin-bottom: 20px;
-}
+  .modal-body {
+    font-size: 35px;
+    color: #666;
+    margin-bottom: 20px;
+  }
 
-.sales-theme.modal-content {
-  background-color: red;
-}
+  .sales-theme.modal-content {
+    background-color: red;
+  }
 
-.sales-theme.modal-title {
-  color: white;
-  font-size: 65px;
-}
+  .sales-theme.modal-title {
+    color: white;
+    font-size: 65px;
+  }
 
-.sales-theme.modal-body {
-  color: white;
-  font-size: 35px;
-}
+  .sales-theme.modal-body {
+    color: white;
+    font-size: 35px;
+  }
 }
 </style>
