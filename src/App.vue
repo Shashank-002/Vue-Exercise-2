@@ -6,7 +6,7 @@
       <div class="button-container">
         <button @click="inputFieldFocus">Focus</button>
         <button @click="toggleModal">Open Modal</button>
-        <button @click="showSlotMessage">Click Me!</button>
+        <Modal><h1>Hii! slot called</h1></Modal>
       </div>
 
     </div>
@@ -38,9 +38,6 @@ export default {
     toggleModal() {
       this.showModal = !this.showModal;
     },
-    showSlotMessage() {
-      alert("Slot callled!")
-    }
   }
 }
 </script>
