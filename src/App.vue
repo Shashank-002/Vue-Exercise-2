@@ -7,8 +7,8 @@
         <button @click="toggleModal()">Open Modal</button>
       </div>
       <div class="theme-button-container">
-        <button @click="setTheme('sales')">Set Theme</button>
-        <button @click="removeTheme()">Remove Theme</button>
+        <button @click="setTheme('sales')">Set Sales Theme</button>
+        <button @click="removeTheme()">Remove Sales Theme</button>
       </div>
     </div>
 
@@ -49,7 +49,6 @@ export default {
     },
     setTheme(theme) {
       this.salesTheme = theme;
-      window.alert(`Current modal theme: ${this.salesTheme}`);
     },
     removeTheme() {
       if (this.salesTheme === 'sales') {
@@ -57,7 +56,6 @@ export default {
       } else {
         this.salesTheme = this.defaultTheme;
       }
-      window.alert(`Current modal theme: ${this.salesTheme}`);
     },
   },
 };
@@ -74,7 +72,7 @@ export default {
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  max-width: 350px;
+  max-width: 450px;
   margin: 50px auto;
   border: 1px solid #e0e0e0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -105,7 +103,7 @@ input[type="text"]:focus {
 
 button {
   flex: 1;
-  min-width: 130px;
+  min-width: 170px;
   margin-top: 10px;
   background-color: #3498db;
   color: white;
@@ -163,7 +161,7 @@ button:active {
 @media (max-width:575px) {
   button {
     flex: 1;
-    min-width: 125px;
+    min-width: 160px;
     margin-top: 10px;
     background-color: #3498db;
     color: white;
@@ -182,7 +180,7 @@ button:active {
 @media (max-width:425px) {
   button {
     flex: 1;
-    min-width: 108px;
+    min-width: 140px;
     margin-top: 10px;
     background-color: #3498db;
     color: white;
@@ -205,14 +203,14 @@ button:active {
 @media (max-width:375px) {
   button {
     flex: 1;
-    min-width: 92px;
+    min-width: 109px;
     margin-top: 10px;
     background-color: #3498db;
     color: white;
     padding: 10px 10px;
     border: none;
     border-radius: 5px;
-    font-size: 10px;
+    font-size: 9px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     margin: 10px 0;
@@ -243,7 +241,7 @@ button:active {
     margin: 150px auto;
     border: 1px solid #e0e0e0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 600px;
+    max-width: 700px;
   }
 
   input[type="text"] {
@@ -271,11 +269,11 @@ button:active {
 
   button {
     flex: 1;
-    min-width: 220px;
+    min-width: 278px;
     margin-top: 10px;
     background-color: #3498db;
     color: white;
-    padding: 15px 20px;
+    padding: 15px 15px;
     border: none;
     border-radius: 5px;
     font-size: 25px;
