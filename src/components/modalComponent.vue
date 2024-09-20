@@ -59,7 +59,7 @@ export default {
 .modal-content {
   background-color: #fff;
   padding: 30px;
-  margin-top: -350px;
+  margin-top: -330px;
   border-radius: 12px;
   max-width: 500px;
   width: 100%;
@@ -96,12 +96,25 @@ export default {
 @media (max-width: 1024px) and (min-width: 900px)
 {
   .modal-content {
-  margin-top: -300px;
-  height: 170px;
+  margin-top: -250px;
+  height: 200px;
+}
+}
+
+@media (max-width:768px)
+{
+  .modal-content {
+  margin-top: -250px;
+  height: 200px;
 }
 }
 
 @media (max-width:575px) {
+
+  .modal-content {
+  margin-top: -250px;
+  height: 180px;
+}
   .sales-theme.modal-content {
     background-color: red;
     max-width: 340px;
@@ -136,6 +149,10 @@ export default {
 }
 
 @media (max-width:375px) {
+  .modal-content {
+  margin-top: -250px;
+  height: 160px;
+}
   .sales-theme.modal-content {
     background-color: red;
     max-width: 240px;
@@ -157,7 +174,7 @@ export default {
   .modal-content {
   background-color: #fff;
   padding: 30px;
-  margin-top: -800px;
+  margin-top: -700px;
   border-radius: 12px;
   max-width: 850px;
   height: 330px;

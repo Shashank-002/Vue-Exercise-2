@@ -6,14 +6,12 @@
       <div class="button-container">
         <button @click="inputFieldFocus">Focus</button>
         <button @click="toggleModal">Open Modal</button>
-        <Modal>
-          <h1>Hii! slot called</h1>
-        </Modal>
       </div>
 
     </div>
     <Modal :isVisible='showModal' :title='modalTitle' :content='modalContent' :theme='modalTheme'
       @closeModal='toggleModal'>
+      <h3>Hii! from slot</h3>
       <template v-slot:links>
         <a href="#" class="link-button">Link 1</a>
         <a href="#" class="link-button">Link 2</a>
@@ -135,6 +133,10 @@ button:active {
 .link-button:active {
   background-color: #2471a3;
   transform: scale(0.98);
+}
+
+h3{
+  color: white;
 }
 
 
