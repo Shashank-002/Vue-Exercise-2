@@ -3,7 +3,8 @@
     <div :class="['modal-content', themeClass]">
       <h2 :class="['modal-title', themeClass]">{{ title }}</h2>
       <p :class="['modal-body', themeClass]">{{ content }}</p>
-      <slot></slot> 
+      <slot></slot>
+      <slot name="links"></slot>
     </div>
   </div>
 </template>
@@ -58,7 +59,7 @@ export default {
 .modal-content {
   background-color: #fff;
   padding: 30px;
-  margin-top: -280px;
+  margin-top: -350px;
   border-radius: 12px;
   max-width: 500px;
   width: 100%;
@@ -85,24 +86,110 @@ export default {
 
 .sales-theme.modal-title {
   color: white;
+  font-size: 36px;
 }
 
 .sales-theme.modal-body {
   color: white;
 }
 
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+@media (max-width: 1024px) and (min-width: 900px)
+{
+  .modal-content {
+  margin-top: -300px;
+  height: 170px;
+}
 }
 
-button:hover {
-  background-color: #2980b9;
+@media (max-width:575px) {
+  .sales-theme.modal-content {
+    background-color: red;
+    max-width: 340px;
+  }
+
+  .sales-theme.modal-title {
+    color: white;
+    font-size: 28px;
+  }
+
+  .sales-theme.modal-body {
+    color: white;
+    font-size: 18px;
+  }
+}
+
+@media (max-width:425px) {
+  .sales-theme.modal-content {
+    background-color: red;
+    max-width: 280px;
+  }
+
+  .sales-theme.modal-title {
+    color: white;
+    font-size: 24px;
+  }
+
+  .sales-theme.modal-body {
+    color: white;
+    font-size: 16px;
+  }
+}
+
+@media (max-width:375px) {
+  .sales-theme.modal-content {
+    background-color: red;
+    max-width: 240px;
+  }
+
+  .sales-theme.modal-title {
+    color: white;
+    font-size: 20px;
+  }
+
+  .sales-theme.modal-body {
+    color: white;
+    font-size: 12px;
+  }
+}
+
+@media (min-width:1600px)
+{
+  .modal-content {
+  background-color: #fff;
+  padding: 30px;
+  margin-top: -800px;
+  border-radius: 12px;
+  max-width: 850px;
+  height: 330px;
+  text-align: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+  font-size: 65px;
+  font-weight: bold;
+  color: #1abc9c;
+  margin-bottom: 15px;
+}
+
+.modal-body {
+  font-size: 35px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.sales-theme.modal-content {
+  background-color: red;
+}
+
+.sales-theme.modal-title {
+  color: white;
+  font-size: 65px;
+}
+
+.sales-theme.modal-body {
+  color: white;
+  font-size: 35px;
+}
 }
 </style>
